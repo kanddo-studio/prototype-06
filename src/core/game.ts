@@ -18,6 +18,9 @@ export const config: Phaser.Types.Core.GameConfig = {
     min: 30,
   },
   scene: GameScene,
+  input: {
+    gamepad: true,
+  },
   physics: {
     default: "arcade",
     arcade: {

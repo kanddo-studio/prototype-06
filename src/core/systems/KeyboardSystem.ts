@@ -3,7 +3,7 @@ import Phaser from "phaser";
 import { Entity, InputComponent, System } from "kanji-ecs";
 
 export class KeyboardSystem implements System {
-  cursors: Phaser.Types.Input.Keyboard.CursorKeys;
+  cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
 
   constructor(scene: Phaser.Scene) {
     if (scene.input.keyboard) {
@@ -19,6 +19,10 @@ export class KeyboardSystem implements System {
 
       if (!inputComponent) {
         throw new Error("Error: Missing Component Dependency");
+      }
+
+      if (!this.cursors) {
+        throw new Error("Error: Missing Keyboard");
       }
 
       inputComponent.keys.clear();

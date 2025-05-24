@@ -95,7 +95,7 @@ describe("PhysicsSystem", () => {
     } as unknown as Entity;
 
     expect(() => physicsSystem.update([faultyEntity])).toThrow(
-      "Error: Missing Component Dependency"
+      "Error: Missing Component Dependency",
     );
   });
 });
