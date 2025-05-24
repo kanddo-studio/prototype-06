@@ -1,0 +1,67 @@
+{
+  "name": "prototype-06",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "src/config/electron/main.js",
+  "description": "prototype-06 description",
+  "author": {
+    "name": "Kanddo",
+    "url": "https://github.com/kanddo-studio"
+  },
+  "scripts": {
+    "start:dev:web": "NODE_ENV=development vite",
+    "start:dev:desktop": "NODE_ENV=development electron . --enable-accelerated-2d-canvas --enable-gpu-rasterization -disable-software-rasterizer",
+    "start:prod:web": "npm run build && vite preview",
+    "build": "NODE_ENV=production tsc && vite build",
+    "build:prod:web": "npm run build",
+    "build:prod:windows": "npm run build && electron-builder --win",
+    "test": "jest --passWithNoTests",
+    "lint:prettier": "npx prettier --write .",
+    "lint:fix": "npm run lint:prettier",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "@types/jest": "^29.5.14",
+    "babel-jest": "^29.7.0",
+    "electron": "^35.1.2",
+    "electron-builder": "^26.0.12",
+    "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "kanji-ecs": "^0.0.19",
+    "ts-jest": "^29.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.3"
+  },
+  "dependencies": {
+    "@babel/preset-typescript": "^7.27.0",
+    "phaser": "^3.88.2"
+  },
+  "build": {
+    "appId": "com.prototype-06.app",
+    "productName": "prototype-06",
+    "icon": "public/assets/images/icons/icon.ico",
+    "win": {
+      "icon": "public/assets/images/icons/icon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "mac": {
+      "icon": "public/assets/images/icons/icon.icns"
+    },
+    "linux": {
+      "icon": "public/assets/images/icons/icon.png"
+    },
+    "files": [
+      "dist/**/*",
+      "src/config/electron/main.js"
+    ],
+    "directories": {
+      "output": "build-desktop"
+    }
+  }
+}
