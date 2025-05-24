@@ -10,7 +10,6 @@ export class KeyboardSystem implements System {
       this.cursors = scene.input.keyboard.createCursorKeys();
       return;
     }
-    throw new Error("Error: Missing Keyboard Input in the Scene");
   }
 
   update(entities: Entity[]) {

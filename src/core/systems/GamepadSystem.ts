@@ -5,17 +5,15 @@ export class GamepadSystem implements System {
   pad?: Phaser.Input.Gamepad.Gamepad;
 
   constructor(scene: Phaser.Scene) {
-    if (!scene.input.gamepad) {
-      throw new Error("Error: Missing Gamepad Input in the Scene");
+    if (scene.input?.gamepad) {
+      scene.input.gamepad.once(
+        "connected",
+        this.handleGamepadConnected.bind(this),
+      );
     }
-
-    scene.input.gamepad.once(
-      "connected",
-      this.handleGamepadConnected.bind(this),
-    );
   }
 
-  private handleGamepadConnected(pad: Phaser.Input.Gamepad.Gamepad) {
+  handleGamepadConnected(pad: Phaser.Input.Gamepad.Gamepad) {
     this.pad = pad;
   }
 

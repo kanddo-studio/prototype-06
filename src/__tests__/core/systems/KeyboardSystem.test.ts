@@ -120,9 +120,10 @@ describe("KeyboardSystem", () => {
 
   it("should throw an error if keyboard input is missing", () => {
     mockScene.input.keyboard = null;
+    keyboardSystem = new KeyboardSystem(mockScene);
 
-    expect(() => new KeyboardSystem(mockScene)).toThrow(
-      "Error: Missing Keyboard Input in the Scene",
+    expect(() => keyboardSystem.update([mockEntity])).toThrow(
+      "Error: Missing Keyboard",
     );
   });
 
